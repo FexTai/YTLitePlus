@@ -1,6 +1,6 @@
-TARGET = iphone:clang:16.5:14.0
-YTLitePlus_USE_FISHHOOK = 0
+TARGET = iphone:clang:latest:15.0
 ARCHS = arm64
+YTLitePlus_USE_FISHHOOK = 0
 MODULES = jailed
 FINALPACKAGE = 1
 CODESIGN_IPA = 0
