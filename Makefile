@@ -1,6 +1,8 @@
 TARGET = iphone:clang:latest:15.0
+SYSROOT = $(THEOS)/sdks/iPhoneOS*.sdk
 ARCHS = arm64
 YTLitePlus_USE_FISHHOOK = 0
+YTLitePlus_LDFLAGS = -Wl,-syslibroot,$(SDKROOT) -arch arm64
 MODULES = jailed
 FINALPACKAGE = 1
 SDKVERSION = 17.0
@@ -20,7 +22,6 @@ YTLitePlus_INJECT_DYLIBS = Tweaks/YTLite/var/jb/Library/MobileSubstrate/DynamicL
 YTLitePlus_FILES = YTLitePlus.xm $(shell find Source -name '*.xm' -o -name '*.x' -o -name '*.m') $(shell find Tweaks/FLEX -type f \( -iname \*.c -o -iname \*.m -o -iname \*.mm \))
 YTLitePlus_IPA = ./tmp/Payload/YouTube.app
 YTLitePlus_CFLAGS = -fobjc-arc -Wno-deprecated-declarations -Wno-unsupported-availability-guard -Wno-unused-but-set-variable -DTWEAK_VERSION=$(PACKAGE_VERSION) $(EXTRA_CFLAGS)
-YTLitePlus_FRAMEWORKS = UIKit Security
 
 include $(THEOS)/makefiles/common.mk
 include $(THEOS_MAKE_PATH)/tweak.mk
